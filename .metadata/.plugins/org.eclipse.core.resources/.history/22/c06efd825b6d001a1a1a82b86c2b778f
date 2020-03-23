@@ -1,0 +1,5 @@
+package io.balleyndev.ppmtool.services;
+
+public class MapValidationErrorService {
+
+}

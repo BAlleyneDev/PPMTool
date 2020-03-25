@@ -1,0 +1,10 @@
+package io.balleyndev.ppmtool.Exceptions;
+
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.RestController;
+
+@ControllerAdvice
+@RestController
+public class CustomResponseEnitityExceptionHandler {
+
+}

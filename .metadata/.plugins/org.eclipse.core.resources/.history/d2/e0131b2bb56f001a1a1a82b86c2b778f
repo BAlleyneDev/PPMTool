@@ -1,0 +1,8 @@
+package io.balleyndev.ppmtool.web;
+
+@RestController
+@RequestMapping("/api/backlog")
+@CrossOrigin
+public class BacklogController {
+
+}

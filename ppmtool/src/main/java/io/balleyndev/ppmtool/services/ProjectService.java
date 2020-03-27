@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.balleyndev.ppmtool.Exceptions.ProjectIdException;
+import io.balleyndev.ppmtool.domain.Backlog;
 import io.balleyndev.ppmtool.domain.Project;
+import io.balleyndev.ppmtool.repositories.BacklogRepository;
 import io.balleyndev.ppmtool.repositories.ProjectRepository;
 
 @Service
@@ -13,10 +15,26 @@ public class ProjectService {
 	@Autowired
 	private ProjectRepository projectRepository;
 
+	@Autowired
+	private BacklogRepository backlogRepository;
+
 	public Project saveOrUpdateProject(Project project) {
 
 		try {
-			project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+			String projectIDUP = project.getProjectIdentifier().toUpperCase();
+			project.setProjectIdentifier(projectIDUP);
+
+			if (project.getId() == null) {
+				Backlog backlog = new Backlog();
+				project.setBacklog(backlog);
+				backlog.setProject(project);
+				backlog.setProjectIdentifier(projectIDUP);
+			}
+
+			if (project.getId() != null) {
+				project.setBacklog(backlogRepository.findByProjectIdentifier(projectIDUP));
+			}
+
 			return projectRepository.save(project);
 
 		} catch (Exception e) {

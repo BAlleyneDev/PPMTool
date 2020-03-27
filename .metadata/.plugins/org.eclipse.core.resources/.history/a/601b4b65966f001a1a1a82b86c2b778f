@@ -1,0 +1,24 @@
+package io.balleyndev.ppmtool.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Backlog {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private Integer PTSequence = 0;
+	private String projectIdentifier;
+
+	// OneToOne with project
+	// Each project has 1 back log
+
+	// OneToMany
+	// A backlog can have 1 or more project tasks but a project task can
+	// only belong to one backlog
+
+}

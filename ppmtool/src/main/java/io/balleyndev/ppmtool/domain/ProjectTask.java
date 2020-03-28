@@ -2,7 +2,6 @@ package io.balleyndev.ppmtool.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +22,7 @@ public class ProjectTask {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	// project 1 task 1
-	@Column(updatable = false)
+	@Column(updatable = false, unique = true)
 	private String projectSequence;
 	@NotBlank(message = "Please include a project summary")
 	private String summary;
@@ -35,7 +34,7 @@ public class ProjectTask {
 	// Can delete a projectTask that is a child of backlog which should refresh the
 	// backlog
 	// However it shouldn't delete the backlog
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "backlog_id", updatable = false, nullable = false)
 	@JsonIgnore
 	private Backlog backlog;

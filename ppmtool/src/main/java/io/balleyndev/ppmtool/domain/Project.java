@@ -16,6 +16,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Project {
@@ -46,7 +47,7 @@ public class Project {
 
 	// A project has only 1 backlog and vice versa
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
-	//
+	@JsonIgnore
 	private Backlog backlog;
 
 	@JsonFormat(pattern = "yyyy-mm-dd")

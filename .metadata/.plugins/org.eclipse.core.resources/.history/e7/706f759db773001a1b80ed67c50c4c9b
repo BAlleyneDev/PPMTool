@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import io.balleyndev.ppmtool.Exceptions.ProjectNotFoundException;
 import io.balleyndev.ppmtool.domain.Backlog;
+import io.balleyndev.ppmtool.domain.Project;
 import io.balleyndev.ppmtool.domain.ProjectTask;
 import io.balleyndev.ppmtool.repositories.BacklogRepository;
 import io.balleyndev.ppmtool.repositories.ProjectRepository;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import io.balleyndev.ppmtool.Exceptions.ProjectNotFoundException;
 import io.balleyndev.ppmtool.domain.Backlog;
+import io.balleyndev.ppmtool.domain.Project;
 import io.balleyndev.ppmtool.domain.ProjectTask;
 import io.balleyndev.ppmtool.repositories.BacklogRepository;
 import io.balleyndev.ppmtool.repositories.ProjectRepository;
@@ -34,7 +35,7 @@ public class ProjectTaskService {
 		// PTs to be added to a specific project, project != null, BL exists
 		// set the BL to PT
 		String projectIdentifierUP = projectIdentifier.toUpperCase();
-		Backlog backlog = projectService.findProjectByIdentifier(projectIdentifier, username).getBacklog();// backlogRepository.findByProjectIdentifier(projectIdentifierUP);
+		Backlog backlog = projectService.findProjectByIdentifier(projectIdentifier, username)//backlogRepository.findByProjectIdentifier(projectIdentifierUP);
 		projectTask.setBacklog(backlog);
 
 		// we want our project sequence to be like this
@@ -64,8 +65,12 @@ public class ProjectTaskService {
 
 	}
 
-	public Iterable<ProjectTask> findBacklogById(String id, String username) {
-		projectService.findProjectByIdentifier(id, username);
+	public Iterable<ProjectTask> findBacklogById(String id) {
+		Project project = projectRepository.findByProjectIdentifier(id);
+
+		if (project == null) {
+			throw new ProjectNotFoundException("Project with ID: '" + id + "' does not exist");
+		}
 
 		return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
 	}

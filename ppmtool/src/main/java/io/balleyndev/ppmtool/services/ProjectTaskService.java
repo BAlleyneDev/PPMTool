@@ -29,41 +29,36 @@ public class ProjectTaskService {
 		/*
 		 * "" ProjectNotFound: "Project not found";
 		 */
+		// PTs to be added to a specific project, project != null, BL exists
+		// set the BL to PT
+		String projectIdentifierUP = projectIdentifier.toUpperCase();
+		Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifierUP);
+		projectTask.setBacklog(backlog);
 
-		try {
-			// PTs to be added to a specific project, project != null, BL exists
-			// set the BL to PT
-			String projectIdentifierUP = projectIdentifier.toUpperCase();
-			Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifierUP);
-			projectTask.setBacklog(backlog);
+		// we want our project sequence to be like this
+		// ProjectIdentifier - 1
+		// ProjectIdentifier - 2
+		// Update the BL Sequence
+		Integer BacklogSequence = backlog.getPTSequence();
+		BacklogSequence++;
 
-			// we want our project sequence to be like this
-			// ProjectIdentifier - 1
-			// ProjectIdentifier - 2
-			// Update the BL Sequence
-			Integer BacklogSequence = backlog.getPTSequence();
-			BacklogSequence++;
+		backlog.setPTSequence(BacklogSequence);
 
-			backlog.setPTSequence(BacklogSequence);
+		// Add Sequence to Task
+		projectTask.setProjectSequence(projectIdentifierUP + "-" + BacklogSequence);
+		projectTask.setProjectIdentifier(projectIdentifierUP);
 
-			// Add Sequence to Task
-			projectTask.setProjectSequence(projectIdentifierUP + "-" + BacklogSequence);
-			projectTask.setProjectIdentifier(projectIdentifierUP);
-
-			// Initial priority when priority null
-			if (projectTask.getPriority() == null || projectTask.getPriority() == 0) {
-				projectTask.setPriority(3);
-			}
-
-			// Initial status when status null
-			if (projectTask.getStatus() == null || projectTask.getStatus() == "") {
-				projectTask.setStatus("TO_DO");
-			}
-
-			return projectTaskRepository.save(projectTask);
-		} catch (Exception e) {
-			throw new ProjectNotFoundException("Project Not Found");
+		// Initial priority when priority null
+		if (projectTask.getPriority() == null || projectTask.getPriority() == 0) {
+			projectTask.setPriority(3);
 		}
+
+		// Initial status when status null
+		if (projectTask.getStatus() == null || projectTask.getStatus() == "") {
+			projectTask.setStatus("TO_DO");
+		}
+
+		return projectTaskRepository.save(projectTask);
 
 	}
 

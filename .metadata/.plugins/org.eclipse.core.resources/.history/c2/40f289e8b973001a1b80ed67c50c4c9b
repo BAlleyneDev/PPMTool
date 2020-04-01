@@ -91,19 +91,18 @@ public class ProjectTaskService {
 		return projectTask;
 	}
 
-	public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id,
-			String username) {
+/*	public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id) {
 		// ProjectTask projectTask =
 		// projectTaskRepository.findByProjectSequence(updatedTask.getProjectSequence());
 		// ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
-		ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id, username);
+		ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);
 
 		projectTask = updatedTask;
 		return projectTaskRepository.save(projectTask);
 	}
 
-	public void deletePTByProjectSequence(String backlog_id, String pt_id, String username) {
-		ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id, username);
+	public void deletePTByProjectSequence(String backlog_id, String pt_id) {
+		ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);
 
 		/*
 		 * Backlog backlog = projectTask.getBacklog(); List<ProjectTask> pts =
@@ -111,7 +110,7 @@ public class ProjectTaskService {
 		 * backlogRepository.save(backlog);
 		 */
 
-		projectTaskRepository.delete(projectTask);
-	}
+	//	projectTaskRepository.delete(projectTask);
+//	}
 
 }

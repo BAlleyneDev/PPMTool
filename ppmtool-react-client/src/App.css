@@ -67,6 +67,16 @@ img {
   color: red;
 }
 
+.jumbotron {
+  background-image: url("background.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 200px 0 140px 0;
+  margin-bottom: 70px;
+  color: white;
+}
+
 .landing {
   position: relative;
   /* background: url("../img/showcase.jpg") no-repeat; */

@@ -5,6 +5,7 @@ import CreateProjectButton from "./Project/CreateProjectButton";
 import { connect } from "react-redux";
 import { getProjects } from "../actions/projectActions";
 import PropTypes from "prop-types";
+import projectHeader from "../undraw_mobile_wireframe_euf4.svg";
 
 class Dashboard extends Component {
   //how component wil load
@@ -18,10 +19,16 @@ class Dashboard extends Component {
 
     return (
       <div className="projects">
-        <div className="container">
+        <div className="container card">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4 text-center">Projects</h1>
+              <h1 className="display-3 text-center">Projects</h1>
+              <img
+                src={projectHeader}
+                width="10%"
+                height="10%"
+                alt="background"
+              />
               <br />
               <CreateProjectButton />
               <br />

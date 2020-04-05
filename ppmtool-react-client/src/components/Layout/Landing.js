@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import logo from "../../logo193.png";
-import logo2 from "../../piChef bw.png";
 import addTaskPic from "../../undraw_online_articles_79ff.svg";
 
 class Landing extends Component {
@@ -23,7 +21,12 @@ class Landing extends Component {
                 <div className="jumbotron light-overlay">
                   <h1 className="display-4">
                     BAlleyneDev Project Management Tool!{" "}
-                    <img src={addTaskPic} width="100vh" height="100vh" />
+                    <img
+                      src={addTaskPic}
+                      width="100vh"
+                      height="100vh"
+                      alt="people building a mobile app"
+                    />
                   </h1>
                   <p className="lead">
                     This is a tool built to help effectively keep your projects
@@ -31,7 +34,8 @@ class Landing extends Component {
                   </p>
                   <hr className="my-4" />
                   <p>
-                    Create your account to join active projects or start you own
+                    Create your account to start managing your projects the
+                    Agile way.
                   </p>
                   <Link to="/register" className="btn btn-lg btn-primary mr-2">
                     Sign Up

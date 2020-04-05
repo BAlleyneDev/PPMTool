@@ -63,8 +63,8 @@ class ProjectBoard extends Component {
     BoardContent = boardAlgorithm(errors, project_tasks);
 
     return (
-      <div className="container">
-        <Link to={`/addProjectTask/${id}`} className="btn btn-primary mb-3">
+      <div className="container card bg-white">
+        <Link to={`/addProjectTask/${id}`} className="btn btn-info mb-3">
           <i className="fas fa-plus-circle"> Create Project Task</i>
         </Link>
         <br />

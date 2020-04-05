@@ -1,7 +1,8 @@
 import {
   GET_BACKLOG,
   GET_PROJECT_TASK,
-  DELETE_PROJECT_TASK
+  DELETE_PROJECT_TASK,
+  UPDATE_PROJECT_TASK
 } from "../actions/types";
 
 const initialState = {
@@ -29,6 +30,16 @@ export default function(state = initialState, action) {
         project_tasks: state.project_tasks.filter(
           project_task => project_task.projectSequence !== action.payload
         )
+      };
+
+    case UPDATE_PROJECT_TASK:
+      let foundIndex = state.project_tasks.findIndex(
+        x => x.projectSequence === action.payload.projectSequence
+      );
+      state.project_tasks[foundIndex] = action.payload;
+      return {
+        ...state,
+        project_tasks: state.project_tasks
       };
 
     default:

@@ -62,11 +62,14 @@ class AddProjectTask extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to={`/projectBoard/${id}`} className="btn btn-light">
+              <Link to={`/projectBoard/${id}`} className="btn btn-info">
                 Back to Project Board
               </Link>
-              <h4 className="display-4 text-center">Add Project Task</h4>
-              <p className="lead text-center">Project Name + Project Code</p>
+              <h4 className="display-4 text-center">
+                Add Project Task - {this.state.projectIdentifier}
+              </h4>
+              <br></br>
+
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input

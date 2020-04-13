@@ -30,4 +30,11 @@ public class CustomResponseEnitityExceptionHandler extends ResponseEntityExcepti
 		return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler
+	public final ResponseEntity<Object> handleProjectAttributeNotFound(ProjectAttributeNotFoundException ex,
+			WebRequest req) {
+		ProjectAttributeNotFoundResponse exceptionResponse = new ProjectAttributeNotFoundResponse(ex.getMessage());
+		return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
+
 }

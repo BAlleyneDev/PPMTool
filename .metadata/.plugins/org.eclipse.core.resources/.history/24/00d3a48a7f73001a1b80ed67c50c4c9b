@@ -1,5 +1,0 @@
-package io.balleyndev.ppmtool.security;
-
-public class JwtAuthenticationFilter {
-
-}

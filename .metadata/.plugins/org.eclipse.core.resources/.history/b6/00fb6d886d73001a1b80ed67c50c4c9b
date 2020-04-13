@@ -1,7 +1,0 @@
-package io.balleyndev.ppmtool.payload;
-
-public class LoginRequest {
-   
-	private String username;
-	private String password;
-}

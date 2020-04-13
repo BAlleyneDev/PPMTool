@@ -1,6 +1,0 @@
-package io.balleyndev.ppmtool.repositories;
-
-@Repository
-public interface ProjectTaskRepository extends CrudRepository<ProjectTask, Long> {
-
-}

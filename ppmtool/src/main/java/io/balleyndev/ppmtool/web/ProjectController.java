@@ -1,6 +1,7 @@
 package io.balleyndev.ppmtool.web;
 
 import java.security.Principal;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.balleyndev.ppmtool.domain.Project;
@@ -52,8 +54,10 @@ public class ProjectController {
 	}
 
 	@GetMapping("/all")
-	public Iterable<Project> getAllProjects(Principal principal) {
-		return projectService.findAllProjects(principal.getName());
+	public Iterable<Project> getAllProjects(Principal principal, @RequestParam Optional<Integer> page,
+			@RequestParam Optional<String> sortBy, @RequestParam Optional<String> direction) {
+		return projectService.findAllProjects(principal.getName(), page.orElse(0), sortBy.orElse("id"),
+				direction.orElse("asc"));
 	}
 
 	@DeleteMapping("/{projectId}")
